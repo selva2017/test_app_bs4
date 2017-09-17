@@ -9,7 +9,7 @@
       type="text" class="form-control" placeholder="Search...">
   </p>
   
-  <data-table
+  <!-- <data-table
     [items]="items"
     [itemCount]="itemCount"
     [limit]="5"
@@ -42,11 +42,74 @@
     >
       <ng-template #dataTableCell let-item="item">
         <button (click)="onClick(item.supplierID)">Edit</button>
-        <!-- <a [routerLink]="['/add-supplier/', item.supplierID]">Edit</a> -->
-        <!-- <a [routerLink]="['inventory/add', item.$key]">Edit</a> -->
+        <a [routerLink]="['/add-supplier/', item.supplierID]">Edit</a>
+        <a [routerLink]="['inventory/add', item.$key]">Edit</a>
       </ng-template>
     </data-table-column>
   
   </data-table>
-  
+   -->
+  <!-- added for tally trial report -->
+  <data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  [limit]="5"
+  (reload)="reloadItems($event)">
+  <data-table-column
+    [property]="'tallySummaryIid'"  
+    [header]="'ID'"
+    [sortable]="true"
+  >
+  </data-table-column>
+  <data-table-column
+  [property]="'reportName'"  
+  [header]="'Report name'"
+  [sortable]="true"
+  [resizable]="true"
+>
+</data-table-column>    
+  <data-table-column
+    [property]="'reportKey'"  
+    [header]="'Report Type'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column>
+<data-table-column
+    [property]="'reportValue1'"  
+    [header]="'Debit'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column>
+<data-table-column
+    [property]="'reportValue2'"  
+    [header]="'Credit'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column>
+<data-table-column
+    [property]="'createdTime'"  
+    [header]="'Report Date'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column>
+<!-- <data-table-column
+    [property]="'check_flag'"  
+    [header]="'Flag'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column> -->
+  <data-table-column
+    [property]="'reportKey'"  
+    [property]="'$key'"  
+  >
+    <ng-template #dataTableCell let-item="item">
+      <button (click)="onClick(item.reportKey)">Edit</button>
+    </ng-template>
+  </data-table-column>
+</data-table> 
   

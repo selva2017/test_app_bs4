@@ -189,6 +189,16 @@ export class ServerService {
             }
             );
     }
+
+    getTallyData() {
+        return this.http.get('http://lowcost-env.nc9myxcv3i.us-west-2.elasticbeanstalk.com/services/tallyservice/tally')
+            .map(
+            (response: Response) => {
+                const data = response.json();
+                return data;
+            }
+            );
+    }
     setItem(product: Product[]) {
         // console.log(this.products);
         this.products = product;
