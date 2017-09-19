@@ -28,8 +28,7 @@ export class ServerService {
 
     getServers() {
         // return this.http.get('https://inventory-c9df5.firebaseio.com/Santhosh.json')      
-        // return this.http.get('http://lowcost-env.nc9myxcv3i.us-west-2.elasticbeanstalk.com/services/patientservice/patients/123')
-        return this.http.get('http://localhost:8080/restws/services/patientservice/patients/')
+         return this.http.get('http://localhost:8080/restws/services/patientservice/patients/')
             .map(
             (response: Response) => {
                 const data = response.json();
@@ -178,7 +177,7 @@ export class ServerService {
     getASupplierData(supplierID) {
         // return this.http.get('http://lowcost-env.nc9myxcv3i.us-west-2.elasticbeanstalk.com/services/patientservice/patients')
         // return this.http.get('http://localhost:8080/restws/services/patientservice/patients')
-        return this.http.get('http://localhost:8080/restws/services/supplierservice/suppliers/'+ supplierID)
+        return this.http.get('http://localhost:8080/restws/services/supplierservice/suppliers/' + supplierID)
             .map(
             (response: Response) => {
                 const data = response.json();
@@ -192,6 +191,7 @@ export class ServerService {
 
     getTallyData() {
         return this.http.get('http://lowcost-env.nc9myxcv3i.us-west-2.elasticbeanstalk.com/services/tallyservice/tally')
+            // return this.http.get('http://localhost:8080/restws/services/tallyservice/tally')
             .map(
             (response: Response) => {
                 const data = response.json();
@@ -199,6 +199,28 @@ export class ServerService {
             }
             );
     }
+    putTallyData(product) {
+        console.log("inside putdata")
+        // product = {
+        //     "tallySummaryIid": "65",
+        //     "reportId": "6",
+        //     "reportName": "REQUEST_XML_TRAIL_BALANCE",
+        //     "reportKey": "Current Liabilities",
+        //     "reportValue1": "-448497.00",
+        //     "reportValue2": "16998937.50",
+        //     "createdTime": "2017-09-18",
+        //     "checkFlag": "1"
+        // };
+        var json = JSON.stringify(product);
+        console.log(json)
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+            json, {
+                headers: headers
+            })
+            .map(res => res.json());
+    }
+
     setItem(product: Product[]) {
         // console.log(this.products);
         this.products = product;

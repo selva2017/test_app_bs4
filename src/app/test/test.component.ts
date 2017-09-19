@@ -59,8 +59,32 @@ export class TestComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  onClick(supplierID) {
-    alert(supplierID);
+  onClick(key1: string) {
+    alert(key1);
+
+    //Need to have the service updated for just passign Flag and report ID
+    // let product_update = '';
+    // this.productService.putTallyData(product_update)
+    //   .subscribe(
+    //   (servers: Prod) => console.log(servers),
+    //   (error) => console.log(error)
+    //   );
+
+    //start---- Get the clicked key and identify the row in array
+    let num = 0;
+    let row;
+    for (num = 0; num <= this.products.length; num++) {
+      if (this.products[num].tallySummaryIid == key1)
+        break;
+    }
+    let product_update = this.products[num];
+    product_update.checkFlag = "1";
+    this.productService.putTallyData(product_update)
+      .subscribe(
+      (servers: Prod) => console.log(servers),
+      (error) => console.log(error)
+      );
+    //---end
   }
   // products: Product[];
   // subscription: Subscription;

@@ -104,11 +104,12 @@
   >
   </data-table-column> -->
   <data-table-column
-    [property]="'reportKey'"  
+    [property]="'tallySummaryIid'"  
     [property]="'$key'"  
   >
     <ng-template #dataTableCell let-item="item">
-      <button (click)="onClick(item.reportKey)">Edit</button>
+      <!-- <button (click)="onClick([item.createdTime,item.tallySummaryIid])">Complete</button> -->
+      <button (click)="onClick(item.tallySummaryIid)">Complete</button>
     </ng-template>
   </data-table-column>
 </data-table> 

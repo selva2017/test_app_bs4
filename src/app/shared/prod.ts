@@ -6,7 +6,7 @@ export interface Prod {
   reportValue1: string;
   reportValue2: string;
   createdTime: string;
-
+  checkFlag: string;
   // tally_summary_id: string;
   // report_name: string;
   // report_key: string;
